@@ -1,9 +1,9 @@
-<div class="w-full h-full shadow-sm border-2 rounded-lg">
+<div class="w-full h-full border-2 rounded-lg shadow-sm">
   <ul *ngIf="items; else noList">
-    <li *ngFor="let item of items">{{ item }}</li>
+    <li *ngFor="let item of items">{{ item.name }}</li>
   </ul>
   <ng-template #noList>
-    <div class="w-full h-full flex justify-center items-center">
+    <div class="flex items-center justify-center w-full h-full">
       <h1>리스트가 없습니다.</h1>
     </div>
   </ng-template>

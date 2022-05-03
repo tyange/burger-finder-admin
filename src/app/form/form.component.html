@@ -1,6 +1,9 @@
 <div class="w-full">
-  <form class="w-full flex justify-center gap-5 items-center">
-    <select name="kind">
+  <form
+    class="w-full flex justify-center gap-5 items-center"
+    (submit)="submitHandler()"
+  >
+    <select name="kind" [(ngModel)]="selectedKind">
       <option value="bread">bread</option>
       <option value="vegetable">vegetable</option>
       <option value="patty">patty</option>
@@ -8,6 +11,12 @@
       <option value="extra">extra</option>
     </select>
     <label for="name" class="text-sm">재료 이름</label>
-    <input type="text" name="name" class="border-2 shadow-sm rounded-lg" />
+    <input
+      type="text"
+      name="name"
+      class="border-2 shadow-sm rounded-lg"
+      [(ngModel)]="enteredName"
+    />
+    <button>submit</button>
   </form>
 </div>
