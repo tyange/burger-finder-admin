@@ -1,34 +1,33 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
-import { Ingredient } from '../shared/ingredient.model';
+import { Ingredient } from './ingredient.model';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css'],
+  selector: 'app-ingredients',
+  templateUrl: './ingredients.component.html',
+  styleUrls: ['./ingredients.component.css'],
 })
-export class ListComponent implements OnInit {
-  items?: Ingredient[] = [];
+export class IngredientsComponent implements OnInit {
+  ingredients?: Ingredient[] = [];
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.renewList();
+    this.renewIngredients();
   }
 
-  renewList() {
+  renewIngredients() {
     this.http
       .get<{ [index: string]: Ingredient }>('http://localhost:4000/ingredients')
       .subscribe((res) => {
         for (let index in res) {
           console.log(res[index]);
-          this.items?.push(res[index]);
+          this.ingredients?.push(res[index]);
         }
       });
   }
 
   logging() {
-    console.log(this.items);
+    console.log(this.ingredients);
   }
 }
