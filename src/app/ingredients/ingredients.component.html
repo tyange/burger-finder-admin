@@ -1,4 +1,5 @@
-<app-list-container>
+<app-add-ingredient></app-add-ingredient>
+<app-list-container [noList]="ingredients ? false : true">
   <ul>
     <li *ngFor="let ingredient of ingredients">
       <app-ingredient [ingredient]="ingredient"></app-ingredient>

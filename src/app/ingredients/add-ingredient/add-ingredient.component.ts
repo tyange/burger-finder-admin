@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css'],
+  selector: 'app-add-ingredient',
+  templateUrl: './add-ingredient.component.html',
+  styleUrls: ['./add-ingredient.component.css'],
 })
-export class FormComponent implements OnInit {
+export class AddIngredientComponent {
   enteredName?: string;
   selectedKind?: string = 'bread';
 
@@ -27,7 +28,7 @@ export class FormComponent implements OnInit {
     this.http
       .post('http://localhost:4000/ingredients', data)
       .subscribe((responseData) => {
-        console.log('ok');
+        // 리스트 갱신
       });
   }
 }

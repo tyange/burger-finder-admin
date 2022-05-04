@@ -9,7 +9,7 @@ import { Ingredient } from '../ingredients/ingredient.model';
   styleUrls: ['./list-container.component.css'],
 })
 export class ListContainerComponent implements OnInit {
-  @Input() items?: boolean;
+  @Input() noList?: boolean;
 
   ngOnInit(): void {
     // this.renewList();

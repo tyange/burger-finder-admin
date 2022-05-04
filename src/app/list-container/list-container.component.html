@@ -1,5 +1,10 @@
 <div class="w-full h-full border-2 rounded-lg shadow-sm">
-  <div>
+  <div *ngIf="!noList; else noListMessage">
     <ng-content></ng-content>
   </div>
+  <ng-template #noListMessage>
+    <div class="flex items-center justify-center w-full h-full">
+      <h1>리스트가 없습니다.</h1>
+    </div>
+  </ng-template>
 </div>

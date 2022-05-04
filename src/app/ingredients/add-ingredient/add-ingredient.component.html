@@ -1,0 +1,20 @@
+<form
+  class="flex items-center justify-center w-full gap-5"
+  (submit)="submitHandler()"
+>
+  <select name="kind" [(ngModel)]="selectedKind">
+    <option value="bread">bread</option>
+    <option value="vegetable">vegetable</option>
+    <option value="patty">patty</option>
+    <option value="sauce">sauce</option>
+    <option value="extra">extra</option>
+  </select>
+  <label for="name" class="text-sm">재료 이름</label>
+  <input
+    type="text"
+    name="name"
+    class="border-2 rounded-lg shadow-sm"
+    [(ngModel)]="enteredName"
+  />
+  <button>submit</button>
+</form>
