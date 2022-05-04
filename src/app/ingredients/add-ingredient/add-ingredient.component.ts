@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 import { IngredientsService } from './../ingredients.service';
 
@@ -8,6 +8,8 @@ import { IngredientsService } from './../ingredients.service';
   styleUrls: ['./add-ingredient.component.css'],
 })
 export class AddIngredientComponent {
+  @Output() reload = new EventEmitter();
+
   enteredName?: string;
   selectedKind?: string = 'bread';
 
@@ -16,6 +18,7 @@ export class AddIngredientComponent {
   ngOnInit(): void {}
 
   submitHandler() {
+    this.reload.emit();
     this.ingredientsService.addIngredient(
       this.enteredName!,
       this.selectedKind!

@@ -31,7 +31,7 @@ export class IngredientsService {
   }
 
   getIngredientsUpdateListener() {
-    return this.ingredientsUpdated.asObservable();
+    return this.ingredientsUpdated;
   }
 
   addIngredient(name: string, kind: string) {

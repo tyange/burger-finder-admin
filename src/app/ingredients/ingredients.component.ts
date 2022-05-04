@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { finalize, Subscription } from 'rxjs';
 
 import { Ingredient } from './ingredient.model';
 import { IngredientsService } from './ingredients.service';
@@ -11,7 +11,9 @@ import { IngredientsService } from './ingredients.service';
 })
 export class IngredientsComponent implements OnInit, OnDestroy {
   ingredients?: Ingredient[] = [];
+  isInit: boolean = false;
   isLoading: boolean = false;
+  isError: boolean = false;
 
   private ingredientSub!: Subscription;
 
@@ -22,13 +24,24 @@ export class IngredientsComponent implements OnInit, OnDestroy {
     this.ingredientsService.getIngredients();
     this.ingredientSub = this.ingredientsService
       .getIngredientsUpdateListener()
-      .subscribe((ingredientsData) => {
-        this.isLoading = false;
-        this.ingredients = ingredientsData.ingredients;
+      .subscribe({
+        next: (ingredientsData: { ingredients: Ingredient[] }) => {
+          this.isLoading = false;
+          this.ingredients = ingredientsData.ingredients;
+        },
       });
   }
 
+  loadingHandler() {
+    this.isLoading = true;
+  }
+
+  retryHandler() {
+    this.ingredientsService.getIngredients();
+  }
+
   ngOnDestroy(): void {
+    console.log('destroy');
     this.ingredientSub.unsubscribe();
   }
 }

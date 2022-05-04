@@ -1,6 +1,13 @@
-<app-add-ingredient></app-add-ingredient>
+<app-add-ingredient (reload)="loadingHandler()"></app-add-ingredient>
 <app-list-container [noList]="ingredients ? false : true">
-  <ul>
+  <div *ngIf="isLoading">
+    <p>로딩중</p>
+  </div>
+  <div *ngIf="!isLoading && isError">
+    <p>에러가 발생하여 리스트를 불러오는데 실패했습니다. 다시 시도해주세요.</p>
+    <button (click)="retryHandler()">retry</button>
+  </div>
+  <ul *ngIf="!isLoading && !isError">
     <li *ngFor="let ingredient of ingredients">
       <app-ingredient [ingredient]="ingredient"></app-ingredient>
     </li>
