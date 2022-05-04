@@ -1,33 +1,34 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+
 import { Ingredient } from './ingredient.model';
+import { IngredientsService } from './ingredients.service';
 
 @Component({
   selector: 'app-ingredients',
   templateUrl: './ingredients.component.html',
   styleUrls: ['./ingredients.component.css'],
 })
-export class IngredientsComponent implements OnInit {
+export class IngredientsComponent implements OnInit, OnDestroy {
   ingredients?: Ingredient[] = [];
+  isLoading: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  private ingredientSub!: Subscription;
+
+  constructor(private ingredientsService: IngredientsService) {}
 
   ngOnInit(): void {
-    this.renewIngredients();
-  }
-
-  renewIngredients() {
-    this.http
-      .get<{ [index: string]: Ingredient }>('http://localhost:4000/ingredients')
-      .subscribe((res) => {
-        for (let index in res) {
-          console.log(res[index]);
-          this.ingredients?.push(res[index]);
-        }
+    this.isLoading = true;
+    this.ingredientsService.getIngredients();
+    this.ingredientSub = this.ingredientsService
+      .getIngredientsUpdateListener()
+      .subscribe((ingredientsData) => {
+        this.isLoading = false;
+        this.ingredients = ingredientsData.ingredients;
       });
   }
 
-  logging() {
-    console.log(this.ingredients);
+  ngOnDestroy(): void {
+    this.ingredientSub.unsubscribe();
   }
 }

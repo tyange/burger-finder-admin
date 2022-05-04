@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { IngredientsService } from './../ingredients.service';
 
 @Component({
   selector: 'app-add-ingredient',
@@ -11,24 +11,14 @@ export class AddIngredientComponent {
   enteredName?: string;
   selectedKind?: string = 'bread';
 
-  constructor(private http: HttpClient) {}
+  constructor(private ingredientsService: IngredientsService) {}
 
   ngOnInit(): void {}
 
   submitHandler() {
-    console.log(this.enteredName);
-    console.log(this.selectedKind);
-
-    const data = {
-      name: this.enteredName,
-      kind: this.selectedKind,
-      amount: 0,
-    };
-
-    this.http
-      .post('http://localhost:4000/ingredients', data)
-      .subscribe((responseData) => {
-        // 리스트 갱신
-      });
+    this.ingredientsService.addIngredient(
+      this.enteredName!,
+      this.selectedKind!
+    );
   }
 }
