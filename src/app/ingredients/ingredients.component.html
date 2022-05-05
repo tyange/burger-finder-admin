@@ -1,7 +1,7 @@
 <app-add-ingredient (reload)="loadingHandler()"></app-add-ingredient>
 <app-list-container [noList]="ingredients ? false : true">
   <div *ngIf="isLoading">
-    <p>로딩중</p>
+    <fa-icon [icon]="faSpinner" [pulse]="true" size="3x"></fa-icon>
   </div>
   <div *ngIf="!isLoading && isError">
     <p>에러가 발생하여 리스트를 불러오는데 실패했습니다. 다시 시도해주세요.</p>

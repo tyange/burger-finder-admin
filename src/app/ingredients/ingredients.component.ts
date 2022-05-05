@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { finalize, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 import { Ingredient } from './ingredient.model';
 import { IngredientsService } from './ingredients.service';
+
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-ingredients',
@@ -14,6 +16,9 @@ export class IngredientsComponent implements OnInit, OnDestroy {
   isInit: boolean = false;
   isLoading: boolean = false;
   isError: boolean = false;
+
+  // fontawesome
+  faSpinner = faSpinner;
 
   private ingredientSub!: Subscription;
 
