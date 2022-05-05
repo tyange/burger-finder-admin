@@ -12,7 +12,8 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./ingredients.component.css'],
 })
 export class IngredientsComponent implements OnInit, OnDestroy {
-  ingredients?: Ingredient[] = [];
+  ingredients?: Array<Ingredient[]> = [];
+  pageNum: number = 0;
   isInit: boolean = false;
   isLoading: boolean = false;
   isError: boolean = false;
@@ -30,7 +31,7 @@ export class IngredientsComponent implements OnInit, OnDestroy {
     this.ingredientSub = this.ingredientsService
       .getIngredientsUpdateListener()
       .subscribe({
-        next: (ingredientsData: { ingredients: Ingredient[] }) => {
+        next: (ingredientsData: { ingredients: Array<Ingredient[]> }) => {
           this.isLoading = false;
           this.ingredients = ingredientsData.ingredients;
         },

@@ -1,5 +1,5 @@
 <div class="w-full h-full border-2 rounded-lg shadow-sm">
-  <div *ngIf="!noList; else noListMessage">
+  <div *ngIf="!noList; else noListMessage" class="box-border w-full h-full p-5">
     <ng-content></ng-content>
   </div>
   <ng-template #noListMessage>
