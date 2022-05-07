@@ -7,8 +7,14 @@
     <p>에러가 발생하여 리스트를 불러오는데 실패했습니다. 다시 시도해주세요.</p>
     <button (click)="retryHandler()">retry</button>
   </div>
-  <ul *ngIf="!isLoading && !isError" class="flex flex-col w-full h-full gap-2">
-    <li *ngFor="let ingredient of ingredients![pageNum]">
+  <ul
+    *ngIf="!isLoading && !isError"
+    class="grid items-center w-full h-full grid-cols-4 grid-rows-4 gap-5 justify-items-center"
+  >
+    <li
+      *ngFor="let ingredient of ingredients![pageNum]"
+      class="w-full border rounded-lg shadow-sm h-5/6"
+    >
       <app-ingredient [ingredient]="ingredient"></app-ingredient>
     </li>
   </ul>

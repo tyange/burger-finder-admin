@@ -1,4 +1,10 @@
-<div>
-  <span>{{ ingredient?.kind }}</span>
+<a
+  class="flex flex-col items-center justify-around w-full h-full"
+  [routerLink]="route"
+>
+  <div class="flex gap-2">
+    <fa-icon [icon]="icon!"></fa-icon>
+    <span>{{ ingredient?.kind }}</span>
+  </div>
   <span>{{ ingredient?.name }}</span>
-</div>
+</a>

@@ -7,6 +7,7 @@ import { IngredientComponent } from './ingredient/ingredient.component';
 import { IngredientsComponent } from './ingredients.component';
 import { AddIngredientComponent } from './add-ingredient/add-ingredient.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     IngredientsComponent,
     ListContainerComponent,
   ],
-  imports: [CommonModule, FormsModule, FontAwesomeModule],
+  imports: [CommonModule, FormsModule, FontAwesomeModule, RouterModule],
 })
 export class IngredientsModule {}

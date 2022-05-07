@@ -25,7 +25,7 @@ export class IngredientsService {
             ingredientsDataArr.push(res[index]);
           }
 
-          const perPage = 10;
+          const perPage = 16;
           const ingredientsData = ingredientsDataArr.reduce(
             (result: any, item, index) => {
               const pageIndex = Math.floor(index / perPage);
