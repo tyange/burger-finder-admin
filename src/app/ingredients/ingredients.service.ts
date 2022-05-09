@@ -51,12 +51,18 @@ export class IngredientsService {
             ingredients: [...this.ingredientsSeparatePage],
           });
         },
-        error: (e) => console.log(e),
+        error: (err) => console.log(err),
       });
   }
 
   getIngredientsUpdateListener() {
     return this.ingredientsUpdated;
+  }
+
+  getIngredient(ingredientId: string) {
+    return this.http.get<Ingredient>(
+      `http://localhost:4000/ingredients/${ingredientId}`
+    );
   }
 
   addIngredient(name: string, kind: string) {

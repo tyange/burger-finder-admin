@@ -8,11 +8,15 @@ import { IngredientsComponent } from './ingredients.component';
 import { AddIngredientComponent } from './add-ingredient/add-ingredient.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
+import { IngredientDetailComponent } from './ingredient-detail/ingredient-detail.component';
+import { IngredientIconComponent } from './ingredient-icon/ingredient-icon.component';
 
 @NgModule({
   declarations: [
     AddIngredientComponent,
     IngredientComponent,
+    IngredientIconComponent,
+    IngredientDetailComponent,
     IngredientsComponent,
     ListContainerComponent,
   ],

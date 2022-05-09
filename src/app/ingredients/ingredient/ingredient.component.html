@@ -3,7 +3,7 @@
   [routerLink]="route"
 >
   <div class="flex gap-2">
-    <fa-icon [icon]="icon!"></fa-icon>
+    <app-ingredient-icon [kind]="ingredient?.kind"></app-ingredient-icon>
     <span>{{ ingredient?.kind }}</span>
   </div>
   <span>{{ ingredient?.name }}</span>

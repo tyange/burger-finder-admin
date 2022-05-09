@@ -1,0 +1,12 @@
+<div
+  class="flex flex-col items-center justify-center w-full h-full border rounded-lg shadow-sm"
+>
+  <div class="flex gap-2">
+    <app-ingredient-icon
+      *ngIf="ingredient?.kind"
+      [kind]="ingredient?.kind"
+    ></app-ingredient-icon>
+    <span>{{ ingredient?.kind }}</span>
+  </div>
+  <span>{{ ingredient?.name }}</span>
+</div>
