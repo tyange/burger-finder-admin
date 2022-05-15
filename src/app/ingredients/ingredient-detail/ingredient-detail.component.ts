@@ -13,6 +13,7 @@ export class IngredientDetailComponent implements OnInit {
   id?: string;
   ingredient?: Ingredient;
   icon?: IconDefinition;
+  isEditing = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,4 +27,24 @@ export class IngredientDetailComponent implements OnInit {
       .getIngredient(this.id)
       .subscribe((data) => (this.ingredient = data));
   }
+
+  editingMode() {
+    this.isEditing = true;
+  }
+
+  saveIngredient(editedIngredient: Ingredient) {
+    this.isEditing = false;
+
+    this.ingredientsService.editIngredient(editedIngredient);
+
+    this.ingredientsService
+      .getIngredient(editedIngredient.id)
+      .subscribe((data) => (this.ingredient = data));
+  }
+
+  cancelEditing() {
+    this.isEditing = false;
+  }
+
+  deleteIngredient() {}
 }

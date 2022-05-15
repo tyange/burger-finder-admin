@@ -74,8 +74,15 @@ export class IngredientsService {
 
     this.http
       .post('http://localhost:4000/ingredients', newIngredient)
-      .subscribe((responseData) => {
+      .subscribe((_) => {
         this.getIngredients();
       });
+  }
+
+  editIngredient(ingredient: Ingredient) {
+    return this.http.put(
+      `http://localhost:4000/ingredients/${ingredient.id}`,
+      ingredient
+    );
   }
 }
