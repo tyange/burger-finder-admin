@@ -1,17 +1,15 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
-
-import { Ingredient } from './ingredient.model';
-import { IngredientsService } from './ingredients.service';
-
+import { Component } from '@angular/core';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { Subscription } from 'rxjs';
+import { Ingredient } from '../ingredient.model';
+import { IngredientsService } from '../ingredients.service';
 
 @Component({
-  selector: 'app-ingredients',
-  templateUrl: './ingredients.component.html',
-  styleUrls: ['./ingredients.component.css'],
+  selector: 'app-ingredient-list',
+  templateUrl: './ingredient-list.component.html',
+  styleUrls: ['./ingredient-list.component.css'],
 })
-export class IngredientsComponent implements OnInit, OnDestroy {
+export class IngredientListComponent {
   ingredients?: Array<Ingredient[]> = [];
   pageNum: number = 0;
   isInit: boolean = false;
@@ -47,7 +45,6 @@ export class IngredientsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('destroy');
     this.ingredientSub.unsubscribe();
   }
 }

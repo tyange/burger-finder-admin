@@ -33,6 +33,8 @@ export class IngredientForm {
   }
 
   saveIngredient(name: string, kind: string) {
+    console.log(kind);
+
     const editedIngredient = {
       ...this.editingIngredient!,
       name,

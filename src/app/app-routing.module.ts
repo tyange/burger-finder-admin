@@ -1,21 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { IngredientListComponent } from './ingredients/ingredient-list/ingredient-list.component';
 import { IngredientDetailComponent } from './ingredients/ingredient-detail/ingredient-detail.component';
-import { IngredientsComponent } from './ingredients/ingredients.component';
+import { EditIngredientComponent } from './ingredients/edit-ingredient/edit-ingredient.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/ingredients', pathMatch: 'full' },
   {
     path: 'ingredients',
-    component: IngredientsComponent,
-    // children: [
-    //   { path: ':ingredientsId', component: IngredientDetailComponent },
-    // ],
+    component: IngredientListComponent,
   },
   {
     path: 'ingredients/:id',
     component: IngredientDetailComponent,
   },
+  {
+    path: 'ingredients/:id/edit',
+    component: EditIngredientComponent,
+  },
+  { path: '', redirectTo: '/ingredients', pathMatch: 'full' },
 ];
 
 @NgModule({

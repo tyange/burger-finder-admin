@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { Ingredient } from './../ingredient.model';
 import { IngredientsService } from './../ingredients.service';
@@ -17,6 +17,7 @@ export class IngredientDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private ingredientsService: IngredientsService
   ) {}
 
@@ -30,6 +31,7 @@ export class IngredientDetailComponent implements OnInit {
 
   editing() {
     this.isEditing = true;
+    this.router.navigate(['edit'], { relativeTo: this.route });
   }
 
   cancelEditing() {
