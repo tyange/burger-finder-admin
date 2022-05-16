@@ -1,4 +1,4 @@
-<app-add-ingredient (reload)="loadingHandler()"></app-add-ingredient>
+<app-ingredient-form (reload)="loadingHandler()"></app-ingredient-form>
 <app-list-container [noList]="ingredients ? false : true">
   <div *ngIf="isLoading">
     <fa-icon [icon]="faSpinner" [pulse]="true" size="3x"></fa-icon>

@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Subject, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 import { Ingredient } from './ingredient.model';
 
@@ -14,6 +14,21 @@ export class IngredientsService {
   }>();
 
   constructor(private http: HttpClient, private router: Router) {}
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      console.error('An error occurred:', error.error);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, body was: `,
+        error.error
+      );
+    }
+
+    return throwError(
+      () => new Error('Something bad happened; please try again later.')
+    );
+  }
 
   getIngredients() {
     this.http
@@ -80,9 +95,12 @@ export class IngredientsService {
   }
 
   editIngredient(ingredient: Ingredient) {
-    return this.http.put(
-      `http://localhost:4000/ingredients/${ingredient.id}`,
-      ingredient
-    );
+    this.http
+      .put(`http://localhost:4000/ingredients/${ingredient.id}`, ingredient)
+      .pipe(catchError(this.handleError))
+      .subscribe((response) => {
+        console.log(response);
+        this.router.navigate([`/ingredients/${ingredient.id}`]);
+      });
   }
 }

@@ -28,18 +28,8 @@ export class IngredientDetailComponent implements OnInit {
       .subscribe((data) => (this.ingredient = data));
   }
 
-  editingMode() {
+  editing() {
     this.isEditing = true;
-  }
-
-  saveIngredient(editedIngredient: Ingredient) {
-    this.isEditing = false;
-
-    this.ingredientsService.editIngredient(editedIngredient);
-
-    this.ingredientsService
-      .getIngredient(editedIngredient.id)
-      .subscribe((data) => (this.ingredient = data));
   }
 
   cancelEditing() {

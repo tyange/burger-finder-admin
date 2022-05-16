@@ -12,13 +12,16 @@
     <span>{{ ingredient?.name }}</span>
   </ng-template>
   <ng-template #ingredientEditForm>
-    <p>editing ingredient form</p>
+    <app-ingredient-form
+      [isEditing]="isEditing"
+      [editingIngredient]="ingredient"
+    ></app-ingredient-form>
   </ng-template>
   <div class="flex gap-5">
     <ng-template [ngIf]="!isEditing">
       <button
         class="w-20 py-2 border rounded-lg shadow-md cursor-pointer"
-        (click)="editingMode()"
+        (click)="editing()"
       >
         edit
       </button>
@@ -27,20 +30,6 @@
         (click)="deleteIngredient()"
       >
         delete
-      </button>
-    </ng-template>
-    <ng-template [ngIf]="isEditing">
-      <button
-        class="w-20 py-2 border rounded-lg shadow-md cursor-pointer"
-        (click)="saveIngredient(ingredient!)"
-      >
-        save
-      </button>
-      <button
-        class="w-20 py-2 border rounded-lg shadow-md cursor-pointer"
-        (click)="cancelEditing()"
-      >
-        cancel
       </button>
     </ng-template>
   </div>
