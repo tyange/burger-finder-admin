@@ -12,10 +12,22 @@
     class="grid items-center w-full h-full grid-cols-4 grid-rows-4 gap-5 justify-items-center"
   >
     <li
-      *ngFor="let ingredient of ingredients![pageNum]"
+      *ngFor="let ingredient of ingredients![currentPageNum]"
       class="w-full border rounded-lg shadow-sm h-5/6"
     >
       <app-ingredient [ingredient]="ingredient"></app-ingredient>
     </li>
   </ul>
 </app-list-container>
+<div *ngIf="ingredients!.length > 1">
+  <ul class="flex justify-center gap-3">
+    <li *ngFor="let ingredient of ingredients!; let i = index">
+      <button
+        (click)="paginationHandler(i)"
+        class="px-2 border rounded-lg shadow-sm"
+      >
+        {{ i + 1 }}
+      </button>
+    </li>
+  </ul>
+</div>

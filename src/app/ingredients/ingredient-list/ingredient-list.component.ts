@@ -11,10 +11,10 @@ import { IngredientsService } from '../ingredients.service';
 })
 export class IngredientListComponent {
   ingredients?: Array<Ingredient[]> = [];
-  pageNum: number = 0;
-  isInit: boolean = false;
-  isLoading: boolean = false;
-  isError: boolean = false;
+  currentPageNum = 0;
+  isInit = false;
+  isLoading = false;
+  isError = false;
 
   // fontawesome
   faSpinner = faSpinner;
@@ -42,6 +42,10 @@ export class IngredientListComponent {
 
   retryHandler() {
     this.ingredientsService.getIngredients();
+  }
+
+  paginationHandler(num: number) {
+    this.currentPageNum = num;
   }
 
   ngOnDestroy(): void {

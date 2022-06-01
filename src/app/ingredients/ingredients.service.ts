@@ -35,6 +35,8 @@ export class IngredientsService {
       .get<{ [key: string]: Ingredient }>('http://localhost:4000/ingredients')
       .pipe(
         map((res) => {
+          console.log(res);
+
           const ingredientsDataArr = [];
           for (let index in res) {
             ingredientsDataArr.push(res[index]);
@@ -55,6 +57,8 @@ export class IngredientsService {
             },
             []
           );
+
+          console.log(ingredientsData);
 
           return ingredientsData;
         })
