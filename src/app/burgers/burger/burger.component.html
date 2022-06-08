@@ -1,0 +1,8 @@
+<span>{{ burger?.imageUrl }}</span>
+<span>{{ burger?.name }}</span>
+<span>{{ burger?.brand }}</span>
+<ul>
+  <li *ngFor="let ingredient of burger?.ingredients">
+    {{ ingredient.name }}
+  </li>
+</ul>

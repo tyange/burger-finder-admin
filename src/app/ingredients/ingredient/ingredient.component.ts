@@ -19,12 +19,10 @@ import {
 export class IngredientComponent implements OnInit {
   @Input() ingredient?: Ingredient;
 
-  route?: string;
   icon?: IconDefinition;
   bgColor?: string;
 
   ngOnInit(): void {
-    this.route = `/ingredients/${this.ingredient?.id}`;
     switch (this.ingredient?.kind) {
       case 'bread':
         this.icon = faBreadSlice;

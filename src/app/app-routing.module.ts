@@ -1,3 +1,4 @@
+import { BurgerListComponent } from './burgers/burger-list/burger-list.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IngredientListComponent } from './ingredients/ingredient-list/ingredient-list.component';
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'ingredients/:id/edit',
     component: EditIngredientComponent,
+  },
+  {
+    path: 'burgers',
+    component: BurgerListComponent,
   },
   { path: '', redirectTo: '/ingredients', pathMatch: 'full' },
 ];
